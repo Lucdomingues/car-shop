@@ -4,9 +4,9 @@ export default class ErrorHandler extends Error {
   type: number;
   message: string;
 
-  constructor(statusCode: number, message: string) {
+  constructor(type: number, message: string) {
     super();
-    this.type = statusCode;
+    this.type = type;
     this.message = message;
   }
 
