@@ -116,7 +116,42 @@ describe('Check /cars route', function () {
       expect((error as Error).message).to.be.deep.equal('Invalid mongo id');
     }
   }); 
-    
+
+  // ------------------------------------------------ Update -------------------------------------------------
+
+  it('checks if it updates the car with the specific id', async function () {
+    // Arrange
+    const inputCar: ICar = {
+      model: 'Marea',
+      year: 1992,
+      color: 'Red',
+      status: true,
+      buyValue: 12.000,
+      doorsQty: 2,
+      seatsQty: 5,
+    };
+
+    const outputCar: ICar = {
+      id: '634852326b35b59438fbea2f',
+      model: 'Marea',
+      year: 1992,
+      color: 'Red',
+      status: true,
+      buyValue: 12.000,
+      doorsQty: 2,
+      seatsQty: 5,
+    };
+
+    sinon.stub(Model, 'findOneAndUpdate').resolves(outputCar);
+    // Act
+
+    const service = new ServiceCar();
+    const result = await service.update('634852326b35b59438fbea2f', inputCar); // atualiza e retorna o valor atualizado
+    // Assert
+
+    expect(result).to.be.deep.equal(outputCar);
+  }); 
+
   afterEach(function () {
     sinon.restore();
   });
