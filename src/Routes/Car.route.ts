@@ -5,7 +5,17 @@ const routes = Router();
 
 routes.post(
   '/cars',
-  (req, res) => new ControllerCar(req, res).create(),
+  (req, res, next) => new ControllerCar(req, res, next).create(),
+);
+
+routes.get(
+  '/cars',
+  (req, res, next) => new ControllerCar(req, res, next).find(),
+);
+
+routes.get(
+  '/cars/:id',
+  (req, res, next) => new ControllerCar(req, res, next).findById(),
 );
 
 export default routes;
