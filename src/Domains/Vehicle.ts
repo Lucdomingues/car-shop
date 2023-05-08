@@ -1,8 +1,8 @@
 import IVehicle from '../Interfaces/IVehicle';
 
-export default class Vehicle implements IVehicle {
+export default class Vehicle {
   public id: string | undefined;
-  public model: string;
+  protected model: string;
   public year: number;
   public color: string;
   public status: boolean;

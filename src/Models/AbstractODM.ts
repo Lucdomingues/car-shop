@@ -1,6 +1,7 @@
 import { Model, model, models, Schema } from 'mongoose';
+import IVehicle from '../Interfaces/IVehicle';
 
-export default abstract class AbstractODM<T> {
+export default abstract class AbstractODM<T extends IVehicle> {
   protected schema: Schema;
   private model: Model<T>;
   protected modelName: string;
@@ -23,7 +24,9 @@ export default abstract class AbstractODM<T> {
     return this.model.findById(id);
   }
 
-  public async update(id: string, updateAbs: T) {
-    return this.model.findOneAndUpdate({ id }, { updateAbs }, { new: true });
+  public async update(updateAbs: T): Promise<T | null> {
+    const filter = { id: updateAbs.id };
+    const update = updateAbs;
+    return this.model.findOneAndUpdate(filter, update, { new: true });
   }
 }

@@ -59,7 +59,7 @@ export default class ServiceCar {
       throw new ErrorHandler(404, 'Car not found');
     }
 
-    const carUpdate = await carODM.update(id, updateCar);
+    const carUpdate = await carODM.update(updateCar);
 
     return this.createCarDomain(carUpdate);
   }

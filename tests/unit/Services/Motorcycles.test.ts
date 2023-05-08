@@ -39,8 +39,4 @@ describe('Check /motorcycles route', function () {
 
     expect(result).to.be.deep.equal(outputMotorcycles);
   });
-
-  afterEach(function () {
-    sinon.restore();
-  });
 });
