@@ -61,4 +61,14 @@ export default class ControllerCar {
       this.next(error);
     }
   }
+
+  public async remove() {
+    try {
+      const { id } = this.req.params;
+      await this.service.remove(id);
+      return this.res.status(204).json();
+    } catch (error) {
+      this.next(error);
+    }
+  }
 }

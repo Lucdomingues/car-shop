@@ -29,4 +29,8 @@ export default abstract class AbstractODM<T extends IVehicle> {
     const update = updateAbs;
     return this.model.findOneAndUpdate(filter, update, { new: true });
   }
+
+  public async remove(id: string) {
+    return this.model.deleteOne({ id });
+  }
 }
