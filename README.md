@@ -122,7 +122,7 @@ Para fazer um **COPY** desse projeto em sua máquina localmente, siga às etapas
 
   - Use o comando: 
    ```sh
-   git clone git@github.com:Lucdomingues/Mongodb-Commerce.git
+   git clone git@github.com:Lucdomingues/car-shop.git
    ```
   2. Instale as dependências
    ```sh
@@ -186,8 +186,8 @@ LINKEDIN - [https://www.linkedin.com/in/lucas-domingues-developer/](https://www.
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/Lucdomingues/Mongodb-Commerce.svg?style=for-the-badge
-[contributors-url]: https://github.com/Lucdomingues/Mongodb-Commerce/graphs/contributors
+[contributors-shield]: https://img.shields.io/github/contributors/Lucdomingues/car-shop.svg?style=for-the-badge
+[contributors-url]: https://github.com/Lucdomingues/car-shop/graphs/contributors
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.linkedin.com/in/lucas-domingues-developer/
 [product-screenshot]: images/screenshot.png
