@@ -39,4 +39,85 @@ describe('Check /motorcycles route', function () {
 
     expect(result).to.be.deep.equal(outputMotorcycles);
   });
+
+  // --------------------------------------------- Find --------------------------------------------------
+
+  it('checks if the motorcycles route brings a list of motorcycles', async function () {
+    // Arrange
+    const outputMotorcycles: IMotorcycles[] = [
+      {
+        id: '634852326b35b59438fbea2f',
+        model: 'Honda Cb 600f Hornet',
+        year: 2005,
+        color: 'Yellow',
+        status: true,
+        buyValue: 30.000,
+        category: 'Street',
+        engineCapacity: 600,
+      },
+      {
+        id: '634852326b35b59438fbea31',
+        model: 'Honda Cbr 1000rr',
+        year: 2011,
+        color: 'Orange',
+        status: true,
+        buyValue: 59.900,
+        category: 'Street',
+        engineCapacity: 1000,
+      },
+    ];
+
+    sinon.stub(Model, 'find').resolves(outputMotorcycles);
+    // Act
+
+    const service = new ServiceMotorcycles();
+    const result = await service.find();
+    // Assert
+
+    expect(result).to.be.deep.equal(outputMotorcycles);
+  });
+
+  // ----------------------------------------------- Find Id -------------------------------------------------------
+
+  it('checks if it returns the specific motorcycle based on id', async function () {
+    // Arrange
+    const outputMotorcycles: IMotorcycles = {
+      id: '634852326b35b59438fbea2f',
+      model: 'Honda Cb 600f Hornet',
+      year: 2005,
+      color: 'Yellow',
+      status: true,
+      buyValue: 30.000,
+      category: 'Street',
+      engineCapacity: 600,
+    };
+
+    sinon.stub(Model, 'findById').resolves(outputMotorcycles);
+    // Act
+
+    const service = new ServiceMotorcycles();
+    const result = await service.findById('634852326b35b59438fbea2f');
+    // Assert
+
+    expect(result).to.be.deep.equal(outputMotorcycles);
+  });
+
+  it('check if the id is not valid', async function () {
+    // Arrange
+    sinon.stub(Model, 'findById').resolves({});
+    // Act
+
+    try {
+      const service = new ServiceMotorcycles();
+      await service.findById('id_invalid'); // Id inválido
+    } catch (error) {
+      // Assert
+
+      expect((error as Error).message).to.be.deep.equal('Invalid mongo id');
+    }
+  });
+
+  afterEach(function () {
+    sinon.restore();
+  });
 });
