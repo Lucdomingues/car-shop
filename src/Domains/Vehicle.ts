@@ -1,26 +1,20 @@
-import ICar from '../Interfaces/ICar';
-import Vehicle from './Vehicle';
+import IVehicle from '../Interfaces/IVehicle';
 
-export default class Car extends Vehicle {
+export default class Vehicle implements IVehicle {
   public id: string | undefined;
   public model: string;
   public year: number;
   public color: string;
   public status: boolean;
   public buyValue: number;
-  private doorsQty: number;
-  private seatsQty: number;
 
-  constructor(objCar: ICar) {
-    super(objCar);
-    this.id = objCar.id;
-    this.model = objCar.model;
-    this.year = objCar.year;
-    this.color = objCar.color;
-    this.status = objCar.status || false;
-    this.buyValue = objCar.buyValue;
-    this.doorsQty = objCar.doorsQty;
-    this.seatsQty = objCar.seatsQty;
+  constructor(objVehicle: IVehicle) {
+    this.id = objVehicle.id;
+    this.model = objVehicle.model;
+    this.year = objVehicle.year;
+    this.color = objVehicle.color;
+    this.status = objVehicle.status || false;
+    this.buyValue = objVehicle.buyValue;
   }
 
   public setId(id: string) {
@@ -69,21 +63,5 @@ export default class Car extends Vehicle {
 
   public getBuyValue() {
     return this.buyValue;
-  }
-
-  public setDoorsQty(doorsQty: number) {
-    this.doorsQty = doorsQty;
-  }
-
-  public getDoorsQty() {
-    return this.doorsQty;
-  }
-
-  public setSeatsQty(seatsQty: number) {
-    this.seatsQty = seatsQty;
-  }
-
-  public getSeatsQty() {
-    return this.seatsQty;
   }
 }
