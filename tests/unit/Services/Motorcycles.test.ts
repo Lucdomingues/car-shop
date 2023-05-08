@@ -47,7 +47,7 @@ describe('Check /motorcycles route', function () {
     const outputMotorcycles: IMotorcycles[] = [
       {
         id: '634852326b35b59438fbea2f',
-        model: 'Honda Cb 600f Hornet',
+        model: 'Honda 600f Hornet',
         year: 2005,
         color: 'Yellow',
         status: true,
@@ -115,6 +115,53 @@ describe('Check /motorcycles route', function () {
 
       expect((error as Error).message).to.be.deep.equal('Invalid mongo id');
     }
+  });
+
+  // ------------------------------------------------ Update -------------------------------------------------
+
+  it('checks if it updates the motorcycle with the specific id', async function () {
+    // Arrange
+    const inputMotorcycles: IMotorcycles = {
+      model: 'Honda Cb 600f',
+      year: 2005,
+      color: 'Yellow',
+      status: true,
+      buyValue: 30.000,
+      category: 'Street',
+      engineCapacity: 600,
+    };
+
+    const outputMotorcycles: IMotorcycles = {
+      id: '634852326b35b59438fbea2f',
+      model: 'Honda Cb 600f Hornet',
+      year: 2005,
+      color: 'Yellow',
+      status: true,
+      buyValue: 30.000,
+      category: 'Street',
+      engineCapacity: 600,
+    };
+
+    const outputMotorcyclesUpdate: IMotorcycles = {
+      id: '634852326b35b59438fbea2f',
+      model: 'Pmv 600v',
+      year: 2005,
+      color: 'Yellow',
+      status: true,
+      buyValue: 30.000,
+      category: 'Street',
+      engineCapacity: 600,
+    };
+
+    sinon.stub(Model, 'findById').resolves(outputMotorcycles);
+    sinon.stub(Model, 'findOneAndUpdate').resolves(outputMotorcyclesUpdate);
+    // Act
+
+    const service = new ServiceMotorcycles();
+    const result = await service.update('634852326b35b59438fbea2f', inputMotorcycles); // atualiza e retorna o valor atualizado
+    // Assert
+
+    expect(result).to.be.deep.equal(outputMotorcyclesUpdate);
   });
 
   afterEach(function () {
