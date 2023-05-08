@@ -10,7 +10,7 @@ describe('Check /motorcycles route', function () {
   it('Check if motorcycles are successfully registered', async function () {
     // Arrange
     const inputMotorcycles: IMotorcycles = {
-      model: 'Honda Cb 600f Hornet',
+      model: 'Honda Cb 600f',
       year: 2005,
       color: 'Yellow',
       status: true,
@@ -21,7 +21,7 @@ describe('Check /motorcycles route', function () {
 
     const outputMotorcycles: Motorcycles = new Motorcycles({
       id: '6348513f34c397abcad040b2',
-      model: 'Honda Cb 600f Hornet',
+      model: 'Honda Cb Hornet',
       year: 2005,
       color: 'Yellow',
       status: true,
