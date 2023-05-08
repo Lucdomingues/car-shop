@@ -150,6 +150,23 @@ describe('Check /cars route', function () {
   //   // Assert
 
   //   expect(result).to.be.deep.equal(outputCar);
+  // });
+  
+  // ------------------------------------------------- Remove --------------------------------------------------
+
+  // it('check if the id is not valid', async function () {
+  //   // Arrange
+  //   sinon.stub(Model, 'findById').resolves({});
+  //   // Act
+
+  //   try {
+  //     const service = new ServiceCar();
+  //     await service.findById('id_invalid'); // Id inválido
+  //   } catch (error) {
+  //     // Assert
+
+  //     expect((error as Error).message).to.be.deep.equal('Invalid mongo id');
+  //   }
   // }); 
 
   afterEach(function () {

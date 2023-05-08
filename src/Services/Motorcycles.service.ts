@@ -45,4 +45,22 @@ export default class ServiceMotorcycles {
 
     return this.createMotorcyclesDomain(motorcycles);
   }
+
+  public async update(id: string, updateMotorcycles: IMotorcycles): Promise<Motorcycles | null> {
+    if (!isValidObjectId(id)) {
+      throw new ErrorHandler(422, 'Invalid mongo id');
+    }
+
+    const motorcyclesODM = new MotorcyclesODM();
+
+    const motorcycles = await motorcyclesODM.findById(id);
+
+    if (!motorcycles) {
+      throw new ErrorHandler(404, 'Motorcycle not found');
+    }
+
+    const motorcyclesUpdate = await motorcyclesODM.update(updateMotorcycles);
+
+    return this.createMotorcyclesDomain(motorcyclesUpdate);
+  }
 }

@@ -50,4 +50,15 @@ export default class ControllerMotorcycles {
       this.next(error);
     }
   }
+
+  public async update() {
+    try {
+      const { id } = this.req.params;
+      const update = this.req.body;
+      const updatedMotorcycles = await this.service.update(id, update);
+      return this.res.status(200).json(updatedMotorcycles);
+    } catch (error) {
+      this.next(error);
+    }
+  }
 }
